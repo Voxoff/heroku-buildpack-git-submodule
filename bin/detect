@@ -1,5 +1,5 @@
 #!/bin/sh
-
+echo 'asdf'
 app_dir="$1"
 
 if [ ! -f "$app_dir/.gitmodules" ]; then
