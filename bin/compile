@@ -58,6 +58,8 @@ echo "   StrictHostKeyChecking no" >> ~/.ssh/config
 echo "   UserKnownHostsFile /dev/null" >> ~/.ssh/config
 echo "   LogLevel ERROR" >> ~/.ssh/config
 echo "-----> Installed SSH key from GIT_SSH_KEY"
+echo $SOURCE_VERSION
+echo "source"
 
 # checkout the revision that's being deployed
 git fetch -q --depth 1 origin -a > /dev/null
