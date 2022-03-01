@@ -65,7 +65,7 @@ git fetch --depth 1 origin -a > /dev/null
 git checkout -f ${SOURCE_VERSION} > /dev/null
 echo "-----> Fetched shallow history from $GIT_REPO_URL"
 
-#mv .backup.gitmodules .gitmodules
+mv .backup.gitmodules .gitmodules
 
 # initialize all the submodules
 git submodule  update --init --recursive
