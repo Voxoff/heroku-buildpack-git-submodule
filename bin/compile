@@ -44,7 +44,7 @@ cp "$ENV_DIR/GIT_SSH_KEY" ~/.ssh/id_ed25519
 echo >> ~/.ssh/id_ed25519
 chmod 600 ~/.ssh/id_ed25519
 echo '--> SSH KEY'
-echo ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519
 
 # ignore/hide ssh warnings
 echo "Host *" >> ~/.ssh/config
