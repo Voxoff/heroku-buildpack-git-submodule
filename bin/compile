@@ -50,7 +50,6 @@ echo $GIT_SSH_PASSPHRASE | SSH_ASKPASS=/bin/cat setsid -w ssh-add ~/.ssh/id_ed25
 
 echo GIT_SSH_PASSPHRASE 
 echo '--> SSH KEY'
-cat ~/.ssh/id_ed25519
 
 # ignore/hide ssh warnings
 echo "Host *" >> ~/.ssh/config
@@ -63,7 +62,7 @@ echo "source"
 
 # checkout the revision that's being deployed
 git fetch -q --depth 1 origin -a > /dev/null
-git checkout -q ${SOURCE_VERSION:-master} > /dev/null
+git checkout -q ${SOURCE_VERSION} > /dev/null
 echo "-----> Fetched shallow history from $GIT_REPO_URL"
 
 # initialize all the submodules
