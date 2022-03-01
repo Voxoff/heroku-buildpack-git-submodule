@@ -2,7 +2,10 @@
 echo 'compiling'
 APP_DIR="$1"
 ENV_DIR="$3"
+echo 'directories...'
 echo $ENV_DIR
+echo $APP_DIR
+
 # load required environment variables
 GIT_REPO_URL=$(<"$ENV_DIR/GIT_REPO_URL")
 GIT_SSH_KEY=$(<"$ENV_DIR/GIT_SSH_KEY")
