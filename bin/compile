@@ -46,7 +46,9 @@ cp "$ENV_DIR/GIT_SSH_KEY" ~/.ssh/id_ed25519
 echo >> ~/.ssh/id_ed25519
 chmod 600 ~/.ssh/id_ed25519
 eval $(ssh-agent)
-echo $GIT_SSH_PASSPHRASE | ssh-add -p ~/.ssh/id_ed25519 
+#echo $GIT_SSH_PASSPHRASE | ssh-add -p ~/.ssh/id_ed25519
+echo $GIT_SSH_PASSPHRASE | SSH_ASKPASS=/bin/cat setsid -w ssh-add ~/.ssh/id_ed25519
+
 echo GIT_SSH_PASSPHRASE 
 echo '--> SSH KEY'
 cat ~/.ssh/id_ed25519
