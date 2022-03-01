@@ -9,6 +9,7 @@ echo $APP_DIR
 # load required environment variables
 GIT_REPO_URL=$(<"$ENV_DIR/GIT_REPO_URL")
 GIT_SSH_KEY=$(<"$ENV_DIR/GIT_SSH_KEY")
+GIT_SSH_PASSPHRASE=$(<"$ENV_DIR/GIT_SSH_PASSWORD")
 
 if [[ -z $GIT_REPO_URL ]]; then
     echo "Did you forget to set GIT_REPO_URL?"
@@ -34,6 +35,7 @@ git init -q
 git config core.sparseCheckout true
 echo ".gitmodules" > .git/info/sparse-checkout
 
+cat passfile | ssh-add -p keyfile
 # add the repo as a remote and fetch the repo's history
 git remote add origin "$GIT_REPO_URL"
 
@@ -43,6 +45,9 @@ ssh-keyscan -H github.com >> ~/.ssh/known_hosts 2> /dev/null
 cp "$ENV_DIR/GIT_SSH_KEY" ~/.ssh/id_ed25519
 echo >> ~/.ssh/id_ed25519
 chmod 600 ~/.ssh/id_ed25519
+eval $(ssh-agent)
+echo $GIT_SSH_PASSPHRASE | ssh-add -p ~/.ssh/id_ed25519 
+echo GIT_SSH_PASSPHRASE 
 echo '--> SSH KEY'
 cat ~/.ssh/id_ed25519
 
